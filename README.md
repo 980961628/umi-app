@@ -1,6 +1,6 @@
 ### umiJS 框架折腾
 
-### 1、关闭/开启eslint
+### 关闭/开启eslint
 .env 文件中修改 eslint项
 
 ### model 使用
