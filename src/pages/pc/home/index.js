@@ -9,11 +9,16 @@ class HomePage extends React.Component {
 
   render() {
     const {system}=this.props
+    const style = {
+      width:'100px',
+      height:'1000px',
+      backgroundColor:'#aaa',
+    }
     return (
-      <div>home
-        <p>{system.name}</p>
+      <div>首页，welcome
         <p>{system.age}</p>
         <Button type="primary" onClick={this.handleClick}>+N</Button>
+        <div style={style}></div>
       </div>
     )
   }
@@ -22,9 +27,9 @@ class HomePage extends React.Component {
     const {dispatch}=this.props
     dispatch({
       type: "system/addAge",
-    }).then(res=>{
+    }).then(res => {
       console.log(res)
-    }).catch(e=>{
+    }).catch(e => {
       console.log(e)
     })
   }

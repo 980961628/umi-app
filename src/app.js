@@ -1,3 +1,5 @@
+// import './assets/styles/minireset.less'
+
 export const dva = {
   config: {
     onError(err) {
