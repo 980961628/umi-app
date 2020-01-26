@@ -7,3 +7,28 @@ html, body, #root {
 body {
   margin: 0;
 }
+
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+
+.fade-enter {
+  opacity: 0;
+  transform: translateX(-50px)
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: all 250ms ease-in;
+  transform: translateX(0);
+}
+
+.fade-exit {
+  opacity: 0;
+}

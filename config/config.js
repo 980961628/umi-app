@@ -4,7 +4,7 @@ import routes from './router.config'
 export default {
   routes,
   disableRedirectHoist: false,
-  history: 'hash',
+  // history: 'hash',
   outputPath: './dist',
   base: '/',
   publicPath: '/',

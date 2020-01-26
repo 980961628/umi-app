@@ -1,6 +1,11 @@
 import React,{Component} from 'react';
+import {Tooltip} from 'antd';
+
 import styles from './menuComp.less'
-import router from 'umi/router'
+
+import SvgIcon from '@/components/svgIcon'
+
+import Link from 'umi/link';
 
 export default class Menu extends Component {
 
@@ -8,14 +13,16 @@ export default class Menu extends Component {
     super(props);
     this.state={
       list: [
-        {id: 1,name: '首页',url: '/a',icon: ''},
-        {id: 2,name: '学习',url: '/a',icon: ''},
-        {id: 3,name: '音乐',url: '/a',icon: ''},
-        {id: 4,name: '视频',url: '/a',icon: ''},
-        {id: 5,name: '趣图',url: '/a',icon: ''},
-        {id: 6,name: '阅读',url: '/a',icon: ''},
-        {id: 7,name: '生活',url: '/a',icon: ''},
-        {id: 8,name: 'Me',url: '/a',icon: ''},
+        {id: 1,name: '首页',url: '/',icon: 'icon-React'},
+        // {id: 2,name: '学习',url: '/a',icon: 'icon-beiwanglu'},
+        {id: 2,name: '学习',url: '/nodes',icon: 'icon-Vue'},
+        {id: 3,name: '音乐',url: '/b',icon: 'icon-yinle1'},
+        {id: 4,name: '视频',url: '/c',icon: 'icon-shipin'},
+        {id: 5,name: '趣图',url: '/d',icon: 'icon-zhaopianPhoto'},
+        {id: 6,name: '阅读',url: '/e',icon: 'icon-AppleBook'},
+        {id: 7,name: '游戏',url: '/f',icon: 'icon-gamepad'},
+        {id: 8,name: '生活',url: '/g',icon: 'icon-shaloudaojishi'},
+        {id: 9,name: '设置',url: '/setting',icon: 'icon-shezhigengxin'},
       ]
     }
 
@@ -25,9 +32,8 @@ export default class Menu extends Component {
 
   }
 
-
-
   render() {
+    const IconStyles={width: '100%',height: '100%'};
     return (
       <div
         className={styles.menuWrapper}
@@ -38,7 +44,20 @@ export default class Menu extends Component {
           className={styles.menuBox}
           ref={ref => this.$refs.oUl=ref}
         >
-          {this.state.list.map((item,i) => <li key={i} className={styles.menuItem}>{item.name}</li>)}
+          {this.state.list.map((item,i) => {
+            return (
+              <li
+                key={i}
+                className={styles.menuItem}
+              >
+                <Tooltip placement="right" title={item.name}>
+                  <Link to={item.url}>
+                    <SvgIcon icon={item.icon} styles={IconStyles} />
+                  </Link>
+                </Tooltip>
+              </li>
+            )
+          })}
         </ul>
       </div>
     )
@@ -54,9 +73,7 @@ export default class Menu extends Component {
     let mouseX=e.clientX
     let mouseY=e.clientY
 
-    // this.$refs.oUl
     let aLi=this.$refs.oUl.querySelectorAll('li')
-
     Array.prototype.slice.apply(aLi).forEach((element,i) => {
       // 获取每个元素的中心点
       let {x,y}=element.getBoundingClientRect()
@@ -70,20 +87,21 @@ export default class Menu extends Component {
       let dis=Math.abs(mouseY-top);
 
       dis=dis>200? 200:dis;
- 
-      let rate=0.003
 
-      element.style.width=50+50*(200-dis)*rate+'px'
-      element.style.height=50+50*(200-dis)*rate+'px'
+      let rate=0.004
+
+      element.style.width=50*(1+(200-dis)*rate)+'px'
+      element.style.height=50*(1+(200-dis)*rate)+'px'
 
     })
   }
 
-  handleMouseLeave(e){
+  handleMouseLeave(e) {
     let aLi=this.$refs.oUl.querySelectorAll('li')
-    Array.prototype.slice.call(aLi).forEach((element)=>{
-      element.style.width = '50px'
-      element.style.height = '50px'
+    Array.prototype.slice.call(aLi).forEach((element) => {
+      element.style.width='50px'
+      element.style.height='50px'
     })
   }
+
 }

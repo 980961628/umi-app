@@ -15,7 +15,8 @@ const PCRouter={
   component: '../layouts/pc/index/index',
   routes: [
     {path: '/',component: '../pages/pc/home'},
-    {path: '/test',component: '../pages/pc/test'},
+    {path: '/nodes',component: '../pages/pc/nodes'},
+    {path: '/setting',component: '../pages/pc/setting'},
     {path: '/login',component: '../pages/pc/login/index'},
     {path: '*',component: '404'},
   ]
